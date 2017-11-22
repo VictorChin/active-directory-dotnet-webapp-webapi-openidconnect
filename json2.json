@@ -1,0 +1,205 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"version": "v1",
+		"title": "TodoListService"
+	},
+	"host": "localhost:44321",
+	"schemes": [ "https" ],
+	"paths": {
+		"/api/todolist/{id}": {
+			"put": {
+				"tags": [ "TodoList" ],
+				"operationId": "TodoList_Test",
+				"consumes": [ "application/json", "text/json", "application/xml", "text/xml", "application/x-www-form-urlencoded" ],
+				"produces": [ "application/json", "text/json", "application/xml", "text/xml" ],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"type": "integer",
+						"format": "int32"
+					},
+					{
+						"name": "x",
+						"in": "body",
+						"required": true,
+						"schema": {
+							"format": "int32",
+							"type": "integer"
+						}
+					},
+					{
+						"name": "y",
+						"in": "query",
+						"required": true,
+						"type": "integer",
+						"format": "int32"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"format": "int32",
+							"type": "integer"
+						}
+					}
+				}
+			}
+		},
+		"/api/TodoList": {
+			"get": {
+				"tags": [ "TodoList" ],
+				"operationId": "TodoList_Get",
+				"consumes": [],
+				"produces": [ "application/json", "text/json", "application/xml", "text/xml" ],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "array",
+							"items": { "$ref": "#/definitions/TodoItem" }
+						}
+					}
+				}
+			},
+			"post": {
+				"tags": [ "TodoList" ],
+				"operationId": "TodoList_Deposit",
+				"consumes": [],
+				"produces": [],
+				"parameters": [
+					{
+						"name": "x",
+						"in": "query",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "y",
+						"in": "query",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "todo.title",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "todo.owner",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					}
+				],
+				"responses": { "204": { "description": "No Content" } }
+			}
+		},
+		"/api/Values": {
+			"get": {
+				"tags": [ "Values" ],
+				"operationId": "Values_Get",
+				"consumes": [],
+				"produces": [ "application/json", "text/json", "application/xml", "text/xml" ],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "array",
+							"items": { "type": "string" }
+						}
+					}
+				}
+			},
+			"post": {
+				"tags": [ "Values" ],
+				"operationId": "Values_Post",
+				"consumes": [ "application/json", "text/json", "application/xml", "text/xml", "application/x-www-form-urlencoded" ],
+				"produces": [],
+				"parameters": [
+					{
+						"name": "value",
+						"in": "body",
+						"required": true,
+						"schema": { "type": "string" }
+					}
+				],
+				"responses": { "204": { "description": "No Content" } }
+			}
+		},
+		"/api/Values/{id}": {
+			"get": {
+				"tags": [ "Values" ],
+				"operationId": "Values_Get",
+				"consumes": [],
+				"produces": [ "application/json", "text/json", "application/xml", "text/xml" ],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"type": "integer",
+						"format": "int32"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": { "type": "string" }
+					}
+				}
+			},
+			"put": {
+				"tags": [ "Values" ],
+				"operationId": "Values_Put",
+				"consumes": [ "application/json", "text/json", "application/xml", "text/xml", "application/x-www-form-urlencoded" ],
+				"produces": [],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"type": "integer",
+						"format": "int32"
+					},
+					{
+						"name": "value",
+						"in": "body",
+						"required": true,
+						"schema": { "type": "string" }
+					}
+				],
+				"responses": { "204": { "description": "No Content" } }
+			},
+			"delete": {
+				"tags": [ "Values" ],
+				"operationId": "Values_Delete",
+				"consumes": [],
+				"produces": [],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"type": "integer",
+						"format": "int32"
+					}
+				],
+				"responses": { "204": { "description": "No Content" } }
+			}
+		}
+	},
+	"definitions": {
+		"TodoItem": {
+			"type": "object",
+			"properties": {
+				"Title": { "type": "string" },
+				"Owner": { "type": "string" }
+			}
+		}
+	}
+}
